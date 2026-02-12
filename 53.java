@@ -1,15 +1,12 @@
 class Solution {
-    public void moveZeroes(int[] nums) {
-         int index = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                nums[index] = nums[i];
-                index++;
-            }
+    public int maxSubArray(int[] nums) {
+        int currentSum = nums[0];
+        int maxSum = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            currentSum = Math.max(nums[i], currentSum + nums[i]);
+            maxSum = Math.max(maxSum, currentSum);
         }
-        for (int i = index; i < nums.length; i++) {
-            nums[i] = 0;
-        }
+        return maxSum;
         
     }
 }
